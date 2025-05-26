@@ -1,0 +1,2 @@
+info:OS,CPU Cores,Memory Size
+load:CPU Usage
