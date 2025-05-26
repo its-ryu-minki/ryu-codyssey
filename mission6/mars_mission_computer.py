@@ -25,18 +25,20 @@ class DummySensor:
         now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         log_line = [now]
         for key in self.env_values:
-            log_line.append(str(round(self.env_values[key], 3)))
+            value = self.env_values[key]
+            log_line.append(str(round(value, 3)))
 
         try:
             with open("env_log.txt", "a") as log_file:
                 log_file.write(', '.join(log_line) + "\n")
-        except Exception as e:
-            print("로그 저장 오류:", e)
+        except:
+            print("로그 파일 저장 실패")
 
         return self.env_values
 
 
-ds = DummySensor()
-ds.set_env()
-env_data = ds.get_env()
-print(env_data)
+if __name__ == "__main__":
+    ds = DummySensor()
+    ds.set_env()
+    env = ds.get_env()
+    print(env)
